@@ -88,26 +88,4 @@ Các request từ người dùng đều được xác thực bằng Form Request
 Sử dụng Eloquent ORM với kỹ thuật eager loading giúp tránh lỗi N+1 query.
 ## 🧱 Sơ đồ cấu trúc (Class Diagram)
 
-```mermaid
-classDiagram
-    class User {
-        +id
-        +name
-        +email
-    }
-
-    class Product {
-        +id
-        +name
-        +price
-        +slug
-    }
-
-    class Order {
-        +id
-        +user_id
-        +status
-    }
-
-    User "1" --> "*" Order
-    Order "*" --> "*" Product
+(images/Sơ đồ cấu trúc.drawio.png)

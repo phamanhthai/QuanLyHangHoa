@@ -7,60 +7,107 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# DemoWeb - Laravel Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 👤 Thông tin sinh viên
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Họ tên:** Phạm Anh Thái 
+- **Mã sinh viên:** 23010784
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📌 Giới thiệu Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**DemoWeb** là một dự án web bán hàng đơn giản được xây dựng bằng Laravel.  
+Ứng dụng hỗ trợ người dùng xem sản phẩm, đặt hàng, quản lý đơn hàng cá nhân và cho phép admin quản lý toàn bộ hệ thống.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
+✅ Chức năng của User (người dùng bình thường)
+⚙️ Truy cập công khai (không cần đăng nhập):
+GET /products: Xem danh sách sản phẩm.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+GET /products/{product:slug}: Xem chi tiết sản phẩm.
 
-## Laravel Sponsors
+🔐 Sau khi đăng nhập:
+GET /dashboard: Chuyển hướng về trang danh sách sản phẩm.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+GET /profile: Xem trang chỉnh sửa hồ sơ.
 
-### Premium Partners
+PATCH /profile: Cập nhật thông tin hồ sơ.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+DELETE /profile: Xoá tài khoản.
 
-## Contributing
+📦 Đặt hàng:
+GET /orders: Xem danh sách đơn hàng của mình.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+POST /orders: Tạo đơn hàng mới.
 
-## Code of Conduct
+GET /orders/{order}: Xem chi tiết đơn hàng.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+👑 Chức năng của Admin (quản trị viên)
+Tất cả các route admin đều dùng tiền tố /admin và cần có middleware auth + admin.
 
-## Security Vulnerabilities
+📊 Dashboard:
+GET /admin: Truy cập trang dashboard chính của admin.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+🛒 Quản lý sản phẩm:
+CRUD tại /admin/products: tạo, xem, sửa, xoá sản phẩm.
 
-## License
+🧩 Quản lý danh mục:
+CRUD tại /admin/categories: quản lý các loại sản phẩm.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📦 Quản lý đơn hàng:
+CRUD tại /admin/orders: xem và xử lý đơn hàng.
+
+👥 Quản lý người dùng:
+CRUD tại /admin/users: quản lý tài khoản người dùng.
+
+🔐 Bảo mật (Security)
+Dự án đã áp dụng một số biện pháp bảo mật cơ bản trong Laravel:
+
+1. Xác thực (Authentication)
+Sử dụng Laravel Breeze để cung cấp tính năng đăng ký, đăng nhập, xác thực email.
+
+Mọi route yêu cầu người dùng phải đăng nhập đều được bảo vệ bởi middleware auth.
+
+2. Phân quyền (Authorization)
+Admin và User được phân biệt thông qua middleware admin.
+
+Các route dành riêng cho quản trị viên (/admin) yêu cầu có quyền admin.
+
+3. Bảo vệ CSRF
+Laravel tự động thêm token CSRF vào các form để ngăn chặn tấn công Cross-Site Request Forgery.
+
+4. Mã hóa mật khẩu
+Mật khẩu người dùng được mã hóa bằng bcrypt thông qua Laravel Auth.
+
+5. Validation dữ liệu đầu vào
+Các request từ người dùng đều được xác thực bằng Form Request Validation để đảm bảo tính đúng đắn và an toàn.
+
+6. Tối ưu hóa truy cập database
+Sử dụng Eloquent ORM với kỹ thuật eager loading giúp tránh lỗi N+1 query.
+## 🧱 Sơ đồ cấu trúc (Class Diagram)
+
+```mermaid
+classDiagram
+    class User {
+        +id
+        +name
+        +email
+    }
+
+    class Product {
+        +id
+        +name
+        +price
+        +slug
+    }
+
+    class Order {
+        +id
+        +user_id
+        +status
+    }
+
+    User "1" --> "*" Order
+    Order "*" --> "*" Product

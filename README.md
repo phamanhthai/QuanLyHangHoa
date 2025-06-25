@@ -449,4 +449,4 @@ public function index(Request $request)
 ### Liên kết
 Link Respository: [https://github.com/phamanhthai/QuanLyHangHoa]
 Link Deploy:
-Link ReadMe.io: 
+Link ReadMe.io: [https://phamanhthai.github.io/WebNC_ReadMe/]

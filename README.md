@@ -90,7 +90,9 @@ Sử dụng Eloquent ORM với kỹ thuật eager loading giúp tránh lỗi N+1
 
 ![ui](images/Sodocautrc.drawio.png)
 ## 🧱 Sơ đồ thuật toán  (Activity Diagram)
+
 🛍️ Hiển thị tất cả sản phẩm được mua bởi khách hàng:
 ![ui](images/Sodothuattoan1.drawio.png)
+
 📊 Tìm kiếm sản phẩm được chọn nhiều nhất:
 ![ui](images/Sodothuattoan2.drawio.png)

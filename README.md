@@ -88,4 +88,4 @@ Các request từ người dùng đều được xác thực bằng Form Request
 Sử dụng Eloquent ORM với kỹ thuật eager loading giúp tránh lỗi N+1 query.
 ## 🧱 Sơ đồ cấu trúc (Class Diagram)
 
-(images/Sơ đồ cấu trúc.drawio.png)
+![ui](images/Sơ đồ cấu trúc.drawio.png)
